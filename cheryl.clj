@@ -1,7 +1,3 @@
-;; Anything you type in here will be executed
-;; immediately with the results shown on the
-;; right.
-(use 'clojure.data)
 (require '[clojure.string :as str])
 
 (def possible-dates '("May 15", "May 16", "May 19",
@@ -36,29 +32,12 @@
   )
 )
 
-(def months-with-uniq-days
-  (map month (flatten (filter #(= (count %) 1) (map tell (map day possible-dates)))))
-)
-
-(def months-without-uniq-days
-   (distinct (map #(month %) (clojure.set/difference (set possible-dates) (set (flatten (map tell months-with-uniq-days))))))
-)
-
-(def dates-in-months-without-uniq-days
-  (filter #(contains? (set months-without-uniq-days) (month %)) possible-dates)
-)
-
-dates-in-months-without-uniq-days
-
 (defn statement4 [date]
-  (let [candidates (tell (day date))]
+  (let [at-first (tell (day date))]
     (and
-      (not (know candidates))
-      (know (filter #(.contains % (day date)) dates-in-months-without-uniq-days))
+      (not (know at-first))
+      (know (filter statement3 at-first))
     )
   )
 )
-
-
-(statement4 "")
 
