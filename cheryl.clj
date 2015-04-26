@@ -40,23 +40,25 @@
   (map month (flatten (filter #(= (count %) 1) (map tell (map day possible-dates)))))
 )
 
-(flatten (map tell months-with-uniq-days))
-
 (def months-without-uniq-days
    (distinct (map #(month %) (clojure.set/difference (set possible-dates) (set (flatten (map tell months-with-uniq-days))))))
 )
 
+(def dates-in-months-without-uniq-days
+  (filter #(contains? (set months-without-uniq-days) (month %)) possible-dates)
+)
+
+dates-in-months-without-uniq-days
+
 (defn statement4 [date]
   (let [candidates (tell (day date))]
-    (let [allowed-candidates (set (filter #(contains? (set months-without-uniq-days) (month %)) candidates))]
-      (clojure.set/difference (set possible-dates) allowed-candidates)
+    (and
+      (not (know candidates))
+      (know (filter #(.contains % (day date)) dates-in-months-without-uniq-days))
     )
   )
 )
 
 
-(tell (day "May 15"))
-
-(statement4 "July 14")
-
+(statement4 "")
 
