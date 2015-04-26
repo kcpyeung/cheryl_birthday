@@ -41,3 +41,28 @@
   )
 )
 
+(defn statement5 [date]
+  (know (filter statement4 (tell (month date))))
+)
+
+(defn statements3to5 [date]
+  (and (statement3 date) (statement4 date) (statement5 date))
+)
+
+(def cheryl-birthday
+  (filter statements3to5 possible-dates)
+)
+
+cheryl-birthday
+
+(know cheryl-birthday)
+
+
+
+
+
+
+
+
+
+
