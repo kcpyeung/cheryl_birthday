@@ -6,3 +6,9 @@
 
 (defn tell [part dates]
   (filter #(s/includes? % part) dates))
+
+(defn month [date]
+  (first (s/split date #" ")))
+
+(defn day [date]
+  (second (s/split date #" ")))

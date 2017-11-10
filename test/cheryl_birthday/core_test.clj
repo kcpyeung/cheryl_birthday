@@ -1,6 +1,7 @@
 (ns cheryl-birthday.core-test
   (:require [clojure.test :refer :all]
-            [cheryl-birthday.core :refer :all]))
+            [cheryl-birthday.core :refer :all]
+            [clojure.string :as s]))
 
 (deftest test-know?
   (testing "having muliple options is not knowing"
@@ -16,7 +17,11 @@
   (let [dates ["May 15", "May 16", "May 19", "June 17", "June 18", "July 14", "July 16", "August 14", "August 15", "August 17"]]
     (testing "telling the month narrows down possible answers to that month"
       (is (= ["May 15" "May 16" "May 19"] (tell "May" dates))))
+    (testing "telling using month"
+      (is (= ["May 15" "May 16" "May 19"] (tell (month "May 15") dates))))
     (testing "telling the day narrows down possible answers to that day"
-      (is (= ["May 15" "August 15"] (tell "15" dates))))))
+      (is (= ["May 15" "August 15"] (tell "15" dates))))
+    (testing "telling using day"
+      (is (= ["May 15" "August 15"] (tell (day "May 15") dates))))))
 
 (run-tests)
