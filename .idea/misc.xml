@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/Downloads/Oleksandr Iskhakov____merchant" value="1482387961000" />
+        <entry key="$USER_HOME$/Downloads/Oleksandr Iskhakov____trains" value="1482387956000" />
+        <entry key="$USER_HOME$/Downloads/conf-scheduler" value="1471209822000" />
+        <entry key="$USER_HOME$/Downloads/directed-graph" value="1489745510000" />
+        <entry key="$USER_HOME$/Downloads/trains" value="1482387956000" />
+        <entry key="$USER_HOME$/IdeaProjects/example" value="1459491174000" />
+        <entry key="$USER_HOME$/hello-world" value="1461656277000" />
+        <entry key="$PROJECT_DIR$/../activator-dist-1.3.10/pets" value="1462953310000" />
+        <entry key="$PROJECT_DIR$/../funsets" value="1462291040000" />
+        <entry key="$PROJECT_DIR$/../objsets" value="1462294046000" />
+        <entry key="$PROJECT_DIR$/../patmat" value="1462351264000" />
+        <entry key="$PROJECT_DIR$/../play-silhouette-seed" value="1452653226000" />
+        <entry key="$PROJECT_DIR$/../recfun" value="1462343930000" />
+        <entry key="$PROJECT_DIR$/../tintin" value="1452653444000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+</project>

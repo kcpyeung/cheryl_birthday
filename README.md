@@ -1,4 +1,14 @@
 # cheryl_birthday
-Cheryl's birthday in clojure
 
-My naïve attempt to plagarise Peter Norvig using clojure: http://nbviewer.ipython.org/url/norvig.com/ipython/Cheryl.ipynb
+A Clojure library designed to ... well, that part is up to you.
+
+## Usage
+
+FIXME
+
+## License
+
+Copyright © 2017 FIXME
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
