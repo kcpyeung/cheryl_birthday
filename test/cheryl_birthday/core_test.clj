@@ -30,7 +30,23 @@
     (is (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "August 15" dates)))
   (testing "Bernard can't tell if there are multiple dates on that day"
     (is (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "August 15" dates)))
+  (testing "it cannot be May because otherwise Bernard might have a unique answer in May 19"
+    (is (not (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "May 15" dates))))
   (testing "it cannot be June because otherwise Bernard might have a unique answer in June 18"
     (is (not (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "June 17" dates)))))
+
+(deftest test-bernard-couldn't-tell-at-first-but-now-he-knows
+  (testing "The day part cannot be unique for otherwise Bernard can tell"
+    (is (not (bernard-couldn't-tell-at-first-but-now-he-knows "May 19" dates))))
+  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
+    (is (not (bernard-couldn't-tell-at-first-but-now-he-knows "July 14" dates))))
+  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
+    (is (not (bernard-couldn't-tell-at-first-but-now-he-knows "August 14" dates))))
+  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
+    (is (bernard-couldn't-tell-at-first-but-now-he-knows "July 16" dates)))
+  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
+    (is (bernard-couldn't-tell-at-first-but-now-he-knows "August 15" dates)))
+  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
+    (is (bernard-couldn't-tell-at-first-but-now-he-knows "August 17" dates))))
 
 (run-tests)

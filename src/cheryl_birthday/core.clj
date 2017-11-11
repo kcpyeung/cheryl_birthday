@@ -19,3 +19,8 @@
         what-albert-thinks-bernard-can-narrow-down-to (map #(tell % all-dates) all-days-in-albert's-list)
         bernard-can't-identify-a-unique-date (not-any? know? what-albert-thinks-bernard-can-narrow-down-to)]
     (and (not (know? what-albert-narrows-down-to)) bernard-can't-identify-a-unique-date)))
+
+(defn bernard-couldn't-tell-at-first-but-now-he-knows [date all-dates]
+  (let [what-bernard-narrows-down-to-at-first (tell (day date) all-dates)
+        what-bernard-narrows-down-to-after-hearing-albert (filter #(albert-doesn't-know-and-he-knows-bernard-can't-tell-either % all-dates) what-bernard-narrows-down-to-at-first)]
+    (and (not (know? what-bernard-narrows-down-to-at-first)) (know? what-bernard-narrows-down-to-after-hearing-albert))))
