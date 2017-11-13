@@ -24,3 +24,7 @@
   (let [what-bernard-narrows-down-to-at-first (tell (day date) all-dates)
         what-bernard-narrows-down-to-after-hearing-albert (filter #(albert-doesn't-know-and-he-knows-bernard-can't-tell-either % all-dates) what-bernard-narrows-down-to-at-first)]
     (and (not (know? what-bernard-narrows-down-to-at-first)) (know? what-bernard-narrows-down-to-after-hearing-albert))))
+
+(defn then-i-also-know-when-cheryl's-birthday-is [date all-dates]
+  (let [what-albert-further-narrows-down-to (tell (month date) all-dates)]
+    (know? what-albert-further-narrows-down-to)))

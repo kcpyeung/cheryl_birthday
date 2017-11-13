@@ -49,4 +49,10 @@
   (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
     (is (bernard-couldn't-tell-at-first-but-now-he-knows "August 17" dates))))
 
+(deftest test-albert-finally-finds-out-too
+  (testing "The month part of the remaining dates must be unique for Albert to know"
+    (is (then-i-also-know-when-cheryl's-birthday-is "July 16" ["July 16" "August 15" "August 17"])))
+  (testing "Albert can't tell if the month part isn't unique"
+    (is (not (then-i-also-know-when-cheryl's-birthday-is "August 15" ["July 16" "August 15" "August 17"])))))
+
 (run-tests)
