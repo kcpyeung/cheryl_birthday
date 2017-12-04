@@ -3,8 +3,6 @@
             [cheryl-birthday.core :refer :all]
             [clojure.string :as s]))
 
-(def dates ["May 15", "May 16", "May 19", "June 17", "June 18", "July 14", "July 16", "August 14", "August 15", "August 17"])
-
 (deftest test-know?
   (testing "having muliple options is not knowing"
     (is (not (know? ["May 3" "May 6"]))))
@@ -27,32 +25,14 @@
 
 (deftest test-albert-doesn't-know-and-he-knows-bernard-can't-tell-either
   (testing "Albert doesn't know if there are multiple dates in that month"
-    (is (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "August 15" dates)))
+    (is (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "August 15")))
   (testing "Bernard can't tell if there are multiple dates on that day"
-    (is (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "August 15" dates)))
+    (is (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "August 15")))
   (testing "it cannot be May because otherwise Bernard might have a unique answer in May 19"
-    (is (not (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "May 15" dates))))
+    (is (not (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "May 15"))))
   (testing "it cannot be June because otherwise Bernard might have a unique answer in June 18"
-    (is (not (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "June 17" dates)))))
-
-(deftest test-bernard-couldn't-tell-at-first-but-now-he-knows
-  (testing "The day part cannot be unique for otherwise Bernard can tell"
-    (is (not (bernard-couldn't-tell-at-first-but-now-he-knows "May 19" dates))))
-  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
-    (is (not (bernard-couldn't-tell-at-first-but-now-he-knows "July 14" dates))))
-  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
-    (is (not (bernard-couldn't-tell-at-first-but-now-he-knows "August 14" dates))))
-  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
-    (is (bernard-couldn't-tell-at-first-but-now-he-knows "July 16" dates)))
-  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
-    (is (bernard-couldn't-tell-at-first-but-now-he-knows "August 15" dates)))
-  (testing "Bernard knows Albert wasn't told May or June. Among dates in July and August, the day part must be unique"
-    (is (bernard-couldn't-tell-at-first-but-now-he-knows "August 17" dates))))
-
-(deftest test-albert-finally-finds-out-too
-  (testing "The month part of the remaining dates must be unique for Albert to know"
-    (is (then-i-also-know-when-cheryl's-birthday-is "July 16" ["July 16" "August 15" "August 17"])))
-  (testing "Albert can't tell if the month part isn't unique"
-    (is (not (then-i-also-know-when-cheryl's-birthday-is "August 15" ["July 16" "August 15" "August 17"])))))
+    (is (not (albert-doesn't-know-and-he-knows-bernard-can't-tell-either "June 17"))))
+  (testing "Albert made his assertion by removing months with unique day"
+    (is (= ["July 14", "July 16", "August 14", "August 15", "August 17"] (filter albert-doesn't-know-and-he-knows-bernard-can't-tell-either dates)))))
 
 (run-tests)
