@@ -35,4 +35,11 @@
   (testing "Albert made his assertion by removing months with unique day"
     (is (= ["July 14", "July 16", "August 14", "August 15", "August 17"] (filter albert-doesn't-know-and-he-knows-bernard-can't-tell-either dates)))))
 
+(deftest test-bernard-couldn't-tell-at-first-but-now-he-knows
+  (testing "Bernard couldn't tell initially because the day part is not unique in the original list"
+    (is (not-any? know? (filter bernard-couldn't-tell-at-first-but-now-he-knows dates))))
+  (testing "Bernard knows after hearing Albert"
+    (let [what-albert-narrows-to ["July 14", "July 16", "August 14", "August 15", "August 17"]]
+      (is (= ["July 16" "August 15" "August 17"] (filter bernard-couldn't-tell-at-first-but-now-he-knows what-albert-narrows-to))))))
+
 (run-tests)
