@@ -42,4 +42,12 @@
     (let [what-albert-narrows-to ["July 14", "July 16", "August 14", "August 15", "August 17"]]
       (is (= ["July 16" "August 15" "August 17"] (filter bernard-couldn't-tell-at-first-but-now-he-knows what-albert-narrows-to))))))
 
+(deftest test-albert-knows-finally
+  (let [what-albert-knew-at-first ["July 14", "July 16", "August 14", "August 15", "August 17"]
+        what-bernard-narrows-to ["July 16" "August 15" "August 17"]]
+    (testing "Albert couldn't tell at first"
+      (is (not (know? (filter albert-knows-finally what-albert-knew-at-first)))))
+    (testing "Albert knows the answer too after Bernard found out"
+      (is (know? (filter albert-knows-finally what-bernard-narrows-to))))))
+
 (run-tests)

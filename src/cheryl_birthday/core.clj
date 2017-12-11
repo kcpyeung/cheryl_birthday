@@ -30,3 +30,8 @@
         what-bernard-finally-narrows-down-to (flatten (filter #(= 1 (count %)) dates-with-the-days))
         bernard-can-tell-now (some #{date} what-bernard-finally-narrows-down-to)]
     (and (not (know? what-bernard-narrows-down-to-at-first)) bernard-can-tell-now)))
+
+(defn albert-knows-finally [date]
+  (let [what-albert-narrows-down-to (tell (month date) dates)
+        what-bernard-narrows-down-to (filter bernard-couldn't-tell-at-first-but-now-he-knows what-albert-narrows-down-to)]
+    (and (not (know? what-albert-narrows-down-to)) (know? what-bernard-narrows-down-to))))
