@@ -50,4 +50,7 @@
     (testing "Albert knows the answer too after Bernard found out"
       (is (know? (filter albert-knows-finally what-bernard-narrows-to))))))
 
+(deftest test-cheryl's-birthday
+  (is (= "July 16" (cheryl's-birthday))))
+
 (run-tests)

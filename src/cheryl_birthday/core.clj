@@ -35,3 +35,10 @@
   (let [what-albert-narrows-down-to (tell (month date) dates)
         what-bernard-narrows-down-to (filter bernard-couldn't-tell-at-first-but-now-he-knows what-albert-narrows-down-to)]
     (and (not (know? what-albert-narrows-down-to)) (know? what-bernard-narrows-down-to))))
+
+(defn cheryl's-birthday []
+  (->> dates
+       (filter albert-doesn't-know-and-he-knows-bernard-can't-tell-either)
+       (filter bernard-couldn't-tell-at-first-but-now-he-knows)
+       (filter albert-knows-finally)
+       first))
